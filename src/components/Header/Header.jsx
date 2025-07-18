@@ -4,11 +4,11 @@ import "../Header/Header.css";
 import SearchForm from "../SearchForm/SearchForm";
 import Navigation from "../Navigation/Navigation";
 
-function Header() {
+function Header({ onSearch }) {
   return (
     <header className="header">
       <Navigation />
-      <SearchForm />
+      <SearchForm onSearch={onSearch} />
     </header>
   );
 }
