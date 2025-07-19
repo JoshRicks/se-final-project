@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("../../vendor/fonts/roboto-slab-400-regular.woff") format("woff");
+}
+
+.main {
+  background-color: #f5f6f7;
+  max-width: 1440px;
+}
+.cards {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+.cards__title {
+  font-family: "Roboto Slab";
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 34px;
+  letter-spacing: 0px;
+  color: #1a1b22;
+  margin: 0 0 32px;
+}
+.cards__list {
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, 574px);
+}
