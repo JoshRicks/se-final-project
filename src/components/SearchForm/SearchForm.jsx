@@ -3,7 +3,6 @@ import "../SearchForm/SearchForm.css";
 
 function SearchForm({ onSearch }) {
   const [search, setSearch] = useState("");
-  const [submitCount, setSubmitCount] = useState(0);
 
   const handleNewSearch = (e) => {
     setSearch(e.target.value);

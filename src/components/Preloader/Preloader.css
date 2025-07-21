@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../../vendor/fonts/roboto-400-regular.woff") format("woff");
+}
+.preloader {
+  border: 1px solid;
+
+  border-image-source: conic-gradient(
+    from 180deg at 50% 50%,
+    #1a1b22 0deg,
+    rgba(209, 210, 214, 0) 360deg
+  );
+}
+.preloader__container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.circle-preloader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(#1a1b22, #d1d2d600);
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 1px),
+    black 100%
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 1px),
+    black 100%
+  );
+  animation: spin 0.75s linear infinite;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.circle-preloader__text {
+  margin: 178px auto 80px;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #b6bcbf;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(-360deg);
+  }
+}

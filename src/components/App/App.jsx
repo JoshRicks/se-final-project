@@ -43,6 +43,7 @@ function App() {
   const handleSearchSubmit = (e, data) => {
     e.preventDefault();
     setNewsSearchData({ q: data });
+    setNewsCardsData([]);
   };
 
   return (

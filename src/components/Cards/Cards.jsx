@@ -1,0 +1,50 @@
+import { useEffect, useState } from "react";
+import "../Cards/Cards.css";
+import NewsCard from "../NewsCard/NewsCard";
+import SearchFailed from "../SearchFailed/SearchFailed";
+
+function Cards({ newsCardsData }) {
+  const [cardTotal, setCardTotal] = useState(3);
+  const [visibleCards, setVisibleCards] = useState([]);
+  const cardsPerPage = 3;
+
+  useEffect(() => {
+    setVisibleCards([]);
+    showMore();
+  }, [newsCardsData]);
+
+  const showMore = () => {
+    if (newsCardsData.length === 0) {
+      return;
+    } else {
+      const nextCardSet = cardTotal + cardsPerPage;
+      const nextArticles = newsCardsData
+        .filter((articles) => {
+          console.log("Filtering article:", articles);
+          return articles;
+        })
+        .slice(cardTotal, nextCardSet);
+      setVisibleCards((prev) => [...prev, ...nextArticles]);
+      setCardTotal(nextCardSet);
+    }
+  };
+  return (
+    <section className="cards">
+      <h3 className="cards__title">Search Results</h3>
+      <ul className="cards__list">
+        {visibleCards.map((article) => {
+          console.log(visibleCards.length);
+          return <NewsCard key={article.title} article={article} />;
+        })}
+      </ul>
+      {cardTotal < newsCardsData.length && (
+        <button className="cards__button" onClick={showMore}>
+          Show more
+        </button>
+      )}
+      <SearchFailed />
+    </section>
+  );
+}
+
+export default Cards;
