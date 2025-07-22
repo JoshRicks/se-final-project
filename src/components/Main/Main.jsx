@@ -2,11 +2,26 @@ import "../Main/Main.css";
 import Cards from "../Cards/Cards";
 import Preloader from "../Preloader/Preloader";
 
-function Main({ newsCardsData }) {
+function Main({
+  newsCardsData,
+  isLoading,
+  searched,
+  searchApiError,
+  searchFailure,
+}) {
   return (
     <main className="main">
-      <Cards newsCardsData={newsCardsData} />
-      <Preloader />
+      {searched ? (
+        isLoading ? (
+          <Preloader />
+        ) : (
+          <Cards
+            newsCardsData={newsCardsData}
+            searchApiError={searchApiError}
+            searchFailure={searchFailure}
+          />
+        )
+      ) : null}
     </main>
   );
 }

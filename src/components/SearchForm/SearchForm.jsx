@@ -27,8 +27,10 @@ function SearchForm({ onSearch }) {
           className="search-form__input"
           id="search-input"
           placeholder="Enter topic"
+          minLength={1}
           onChange={handleNewSearch}
           value={search}
+          required
         />
         <button className="search-form__button" type="submit">
           Search

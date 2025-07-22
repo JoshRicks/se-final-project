@@ -3,7 +3,7 @@ import "../Cards/Cards.css";
 import NewsCard from "../NewsCard/NewsCard";
 import SearchFailed from "../SearchFailed/SearchFailed";
 
-function Cards({ newsCardsData }) {
+function Cards({ newsCardsData, searchApiError, searchFailure }) {
   const [cardTotal, setCardTotal] = useState(3);
   const [visibleCards, setVisibleCards] = useState([]);
   const cardsPerPage = 3;
@@ -30,19 +30,24 @@ function Cards({ newsCardsData }) {
   };
   return (
     <section className="cards">
-      <h3 className="cards__title">Search Results</h3>
-      <ul className="cards__list">
-        {visibleCards.map((article) => {
-          console.log(visibleCards.length);
-          return <NewsCard key={article.title} article={article} />;
-        })}
-      </ul>
-      {cardTotal < newsCardsData.length && (
-        <button className="cards__button" onClick={showMore}>
-          Show more
-        </button>
+      {searchFailure ? (
+        <SearchFailed searchApiError={searchApiError} />
+      ) : (
+        <>
+          <h3 className="cards__title">Search Results</h3>
+          <ul className="cards__list">
+            {visibleCards.map((article) => {
+              console.log(visibleCards.length);
+              return <NewsCard key={article.title} article={article} />;
+            })}
+          </ul>
+          {cardTotal < newsCardsData.length && (
+            <button className="cards__button" onClick={showMore}>
+              Show more
+            </button>
+          )}
+        </>
       )}
-      <SearchFailed />
     </section>
   );
 }

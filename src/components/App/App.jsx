@@ -12,16 +12,37 @@ function App() {
   });
   const [newsCardsData, setNewsCardsData] = useState([]);
   const [activeModal, setActiveModal] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [searched, setSearched] = useState(false);
+  const [searchFailure, setSearchFailure] = useState(false);
+  const [searchApiError, setSearchApiError] = useState(false);
 
   useEffect(() => {
     if (newsSearchData.q === "") {
       return;
-    } else
-      getNews(newsSearchData)
-        .then((data) => {
+    }
+
+    setIsLoading(true);
+    setSearchFailure(false);
+    setSearchApiError(false);
+
+    getNews(newsSearchData)
+      .then((data) => {
+        if (!data.articles || data.articles.length === 0) {
+          setSearchFailure(true);
+        } else {
           setNewsCardsData(data.articles);
-        })
-        .catch(console.error);
+          setSearchFailure(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setSearchApiError(true);
+        setSearchFailure(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [newsSearchData]);
 
   useEffect(() => {
@@ -42,6 +63,8 @@ function App() {
 
   const handleSearchSubmit = (e, data) => {
     e.preventDefault();
+    setIsLoading(true);
+    setSearched(true);
     setNewsSearchData({ q: data });
     setNewsCardsData([]);
   };
@@ -50,7 +73,13 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header onSearch={handleSearchSubmit} />
-        <Main newsCardsData={newsCardsData} />
+        <Main
+          isLoading={isLoading}
+          searched={searched}
+          newsCardsData={newsCardsData}
+          searchApiError={searchApiError}
+          searchFailure={searchFailure}
+        />
         <About />
         <Footer />
       </div>
