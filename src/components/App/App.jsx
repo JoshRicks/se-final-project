@@ -69,6 +69,10 @@ function App() {
     setNewsCardsData([]);
   };
 
+  const closeActiveModal = () => {
+    setActiveModal("");
+  };
+
   return (
     <div className="page">
       <div className="page__content">
