@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import "../Navigation/Navigation.css";
 
-function Navigation() {
+function Navigation({ loginClick }) {
   return (
     <div className="navigation__content">
       <Link to="/" className="navigation__logo-link">
@@ -11,7 +11,9 @@ function Navigation() {
       <Link to="/" className="navigation__link">
         <p className="navigation__text">Home</p>
       </Link>
-      <button className="navigation__button">Sign In</button>
+      <button onClick={loginClick} className="navigation__button">
+        Sign In
+      </button>
     </div>
   );
 }

@@ -5,6 +5,8 @@ import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import { getNews } from "../../utils/newsApi";
 import Main from "../Main/Main";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
 
 function App() {
   const [newsSearchData, setNewsSearchData] = useState({
@@ -69,14 +71,32 @@ function App() {
     setNewsCardsData([]);
   };
 
+  const handleRegisterClick = () => {
+    setActiveModal("register-modal");
+  };
+
+  const handleLogInClick = () => {
+    setActiveModal("login-modal");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
 
   return (
     <div className="page">
+      <RegisterModal
+        isOpen={activeModal === "register-modal"}
+        onClose={closeActiveModal}
+        loginClick={handleLogInClick}
+      />
+      <LoginModal
+        isOpen={activeModal === "login-modal"}
+        onClose={closeActiveModal}
+        registerClick={handleRegisterClick}
+      />
       <div className="page__content">
-        <Header onSearch={handleSearchSubmit} />
+        <Header onSearch={handleSearchSubmit} loginClick={handleLogInClick} />
         <Main
           isLoading={isLoading}
           searched={searched}

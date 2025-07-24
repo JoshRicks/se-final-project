@@ -4,10 +4,10 @@ import "../Header/Header.css";
 import SearchForm from "../SearchForm/SearchForm";
 import Navigation from "../Navigation/Navigation";
 
-function Header({ onSearch }) {
+function Header({ onSearch, loginClick }) {
   return (
     <header className="header">
-      <Navigation />
+      <Navigation loginClick={loginClick} />
       <SearchForm onSearch={onSearch} />
     </header>
   );
