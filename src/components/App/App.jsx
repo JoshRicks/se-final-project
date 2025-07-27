@@ -18,6 +18,7 @@ function App() {
   const [searched, setSearched] = useState(false);
   const [searchFailure, setSearchFailure] = useState(false);
   const [searchApiError, setSearchApiError] = useState(false);
+  const [savedArticle, setSavedArticle] = useState([]);
 
   useEffect(() => {
     if (newsSearchData.q === "") {
