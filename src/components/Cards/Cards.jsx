@@ -3,7 +3,14 @@ import "../Cards/Cards.css";
 import NewsCard from "../NewsCard/NewsCard";
 import SearchFailed from "../SearchFailed/SearchFailed";
 
-function Cards({ newsCardsData, searchApiError, searchFailure }) {
+function Cards({
+  newsCardsData,
+  searchApiError,
+  searchFailure,
+  newsSearchData,
+  setSavedArticles,
+  savedArticles,
+}) {
   const [cardTotal, setCardTotal] = useState(3);
   const [visibleCards, setVisibleCards] = useState([]);
   const cardsPerPage = 3;
@@ -20,7 +27,6 @@ function Cards({ newsCardsData, searchApiError, searchFailure }) {
       const nextCardSet = cardTotal + cardsPerPage;
       const nextArticles = newsCardsData
         .filter((articles) => {
-          console.log("Filtering article:", articles);
           return articles;
         })
         .slice(cardTotal, nextCardSet);
@@ -37,8 +43,15 @@ function Cards({ newsCardsData, searchApiError, searchFailure }) {
           <h3 className="cards__title">Search Results</h3>
           <ul className="cards__list">
             {visibleCards.map((article) => {
-              console.log(visibleCards.length);
-              return <NewsCard key={article.title} article={article} />;
+              return (
+                <NewsCard
+                  key={article.title}
+                  article={article}
+                  newsSearchData={newsSearchData}
+                  setSavedArticles={setSavedArticles}
+                  savedArticles={savedArticles}
+                />
+              );
             })}
           </ul>
           {cardTotal < newsCardsData.length && (

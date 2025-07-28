@@ -53,3 +53,16 @@
   color: #fff;
   margin: 0 116px 0 42px;
 }
+.navigation__content-v2 {
+  box-shadow: 0px -1px 0px 0px #d1d2d6 inset;
+}
+.navigation__title-v2 {
+  color: #1a1b22;
+}
+.navigation__text-v2 {
+  color: #1a1b22;
+}
+.navigation__button-v2 {
+  color: #1a1b22;
+  border: #1a1b22 1px solid;
+}

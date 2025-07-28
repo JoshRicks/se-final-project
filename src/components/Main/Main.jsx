@@ -8,6 +8,9 @@ function Main({
   searched,
   searchApiError,
   searchFailure,
+  newsSearchData,
+  setSavedArticles,
+  savedArticles,
 }) {
   return (
     <main className="main">
@@ -19,6 +22,9 @@ function Main({
             newsCardsData={newsCardsData}
             searchApiError={searchApiError}
             searchFailure={searchFailure}
+            newsSearchData={newsSearchData}
+            setSavedArticles={setSavedArticles}
+            savedArticles={savedArticles}
           />
         )
       ) : null}

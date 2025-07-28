@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 80px 0 0 0;
+  margin: 80px 0;
 }
 .search-form__title {
   width: 608px;

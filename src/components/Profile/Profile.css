@@ -1,0 +1,9 @@
+.saved-articles {
+  padding: 62px 102px;
+}
+.saved-articles__list {
+  padding: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, 400px);
+}

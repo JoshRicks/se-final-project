@@ -12,6 +12,7 @@
   direction: row;
   gap: 56px;
   padding: 80px 116px 80px 104px;
+  background-color: #fff;
 }
 
 .about__image {
