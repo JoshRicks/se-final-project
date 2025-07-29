@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Routes,
   Route,
@@ -16,6 +16,7 @@ import Main from "../Main/Main";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import Profile from "../Profile/Profile";
+import validation from "../../utils/validation";
 
 function App() {
   const [newsSearchData, setNewsSearchData] = useState({
@@ -74,7 +75,12 @@ function App() {
     };
   }, [activeModal]);
 
+  useEffect(() => {
+    validation.enableValidation(validation.config);
+  }, []);
+
   const location = useLocation();
+  const formRef = useRef(null);
 
   const handleSearchSubmit = (e, data) => {
     e.preventDefault();
@@ -84,16 +90,30 @@ function App() {
     setNewsCardsData([]);
   };
 
-  const handleRegisterClick = () => {
+  const handleRegisterClick = (e) => {
+    e.preventDefault();
     setActiveModal("register-modal");
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+    validation.resetValidation(validation.config);
   };
 
-  const handleLogInClick = () => {
+  const handleLogInClick = (e) => {
+    e.preventDefault();
     setActiveModal("login-modal");
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+    validation.resetValidation(validation.config);
   };
 
   const closeActiveModal = () => {
     setActiveModal("");
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+    validation.resetValidation(validation.config);
   };
 
   return (
@@ -102,11 +122,13 @@ function App() {
         isOpen={activeModal === "register-modal"}
         onClose={closeActiveModal}
         loginClick={handleLogInClick}
+        formRef={formRef}
       />
       <LoginModal
         isOpen={activeModal === "login-modal"}
         onClose={closeActiveModal}
         registerClick={handleRegisterClick}
+        formRef={formRef}
       />
       <div className="page__content">
         <Header
@@ -114,6 +136,7 @@ function App() {
           loginClick={handleLogInClick}
           location={location}
           savedArticles={savedArticles}
+          isLoggedIn={isLoggedIn}
         />
         <Routes>
           <Route
@@ -129,6 +152,8 @@ function App() {
                   newsSearchData={newsSearchData}
                   setSavedArticles={setSavedArticles}
                   savedArticles={savedArticles}
+                  isLoggedIn={isLoggedIn}
+                  location={location}
                 />
                 <About />
               </>
@@ -141,6 +166,7 @@ function App() {
                 savedArticles={savedArticles}
                 newsSearchData={newsSearchData}
                 setSavedArticles={setSavedArticles}
+                location={location}
               />
             }
           />

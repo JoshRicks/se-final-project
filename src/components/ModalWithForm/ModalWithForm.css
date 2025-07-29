@@ -82,11 +82,12 @@
   font-size: 12px;
   line-height: 1;
   letter-spacing: 0%;
+  margin-bottom: 31px;
 }
 .modal__input {
   border: none;
   border-bottom: 1px solid #000000;
-  margin: 10px 0 31px;
+  margin: 10px 0 0;
   padding-bottom: 9px;
   font-family: "Inter";
   font-weight: 400;
@@ -112,7 +113,8 @@
   color: #000000;
 }
 .register__link {
-  text-decoration: none;
+  background: none;
+  border: none;
   color: #2f41e5;
   font-family: "Inter";
   font-weight: 400;
@@ -139,7 +141,8 @@
   color: #000000;
 }
 .login__link {
-  text-decoration: none;
+  background: none;
+  border: none;
   color: #2f41e5;
   font-family: "Inter";
   font-weight: 400;
@@ -149,5 +152,25 @@
   text-align: center;
 }
 .modal__register-error {
-  margin: 0;
+  margin: 0 auto;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #ff0000;
+}
+.modal__submit-btn_disabled {
+  background-color: #e6e8eb;
+  color: #b6bcbf;
+}
+.modal__error {
+  color: #ff0000;
+  margin: 3px 0 0;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0%;
 }

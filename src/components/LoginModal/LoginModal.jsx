@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LoginModal({ isOpen, onClose, registerClick }) {
+function LoginModal({ isOpen, onClose, registerClick, formRef }) {
   return (
     <ModalWithForm
       title="Sign in"
@@ -12,6 +12,7 @@ function LoginModal({ isOpen, onClose, registerClick }) {
       formId="login-form"
       isOpen={isOpen}
       onClose={onClose}
+      formRef={formRef}
     >
       <label htmlFor="login-email-input" className="modal__label">
         Email
@@ -22,10 +23,7 @@ function LoginModal({ isOpen, onClose, registerClick }) {
           placeholder="Enter email"
           name="email"
         />
-        <span
-          className="modal__input-error"
-          id="login-email-input-error"
-        ></span>
+        <span className="modal__error" id="login-email-input-error"></span>
       </label>
       <label htmlFor="login-password-input" className="modal__label">
         Password
@@ -36,20 +34,13 @@ function LoginModal({ isOpen, onClose, registerClick }) {
           placeholder="Enter password"
           name="password"
         />
-        <span
-          className="modal__input-error"
-          id="login-password-input-error"
-        ></span>
+        <span className="modal__error" id="login-password-input-error"></span>
       </label>
       <p className="register__btn">
         or
-        <Link
-          className="register__link"
-          to="register-modal"
-          onClick={registerClick}
-        >
+        <button className="register__link" onClick={registerClick}>
           Sign up
-        </Link>
+        </button>
       </p>
     </ModalWithForm>
   );

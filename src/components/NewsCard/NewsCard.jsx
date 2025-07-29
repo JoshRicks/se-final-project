@@ -7,6 +7,8 @@ function NewsCard({
   newsSearchData,
   setSavedArticles,
   savedArticles,
+  isLoggedIn,
+  location,
 }) {
   const handleSaveClick = () => {
     const newSavedArticle = {
@@ -37,11 +39,36 @@ function NewsCard({
   return (
     <div className="news-card">
       <div className="news-card__save-container">
-        <p className="news-card__keyword">{article.keyword}</p>
-        <p className="news-card__text">Sign in to save articles</p>
-        <button className="news-card__save-btn" onClick={handleSaveClick}>
-          <img src={saveImage} alt="save" className="news-card__save-icon" />
-        </button>
+        {location.pathname === "/saved-articles" ? (
+          <>
+            <p className="news-card__keyword">{article.keyword}</p>
+            <button className="news-card__save-btn" onClick={handleSaveClick}>
+              <img
+                src={saveImage}
+                alt="save"
+                className="news-card__save-icon"
+              />
+            </button>
+          </>
+        ) : isLoggedIn ? (
+          <button
+            className="news-card__save-btn news-card__save-btn-v2"
+            onClick={handleSaveClick}
+          >
+            <img src={saveImage} alt="save" className="news-card__save-icon" />
+          </button>
+        ) : (
+          <>
+            <p className="news-card__text">Sign in to save articles</p>
+            <button className="news-card__save-btn" onClick={handleSaveClick}>
+              <img
+                src={saveImage}
+                alt="save"
+                className="news-card__save-icon"
+              />
+            </button>
+          </>
+        )}
       </div>
       <img
         src={article.urlToImage}

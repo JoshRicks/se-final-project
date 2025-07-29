@@ -10,6 +10,8 @@ function Cards({
   newsSearchData,
   setSavedArticles,
   savedArticles,
+  isLoggedIn,
+  location,
 }) {
   const [cardTotal, setCardTotal] = useState(3);
   const [visibleCards, setVisibleCards] = useState([]);
@@ -50,6 +52,8 @@ function Cards({
                   newsSearchData={newsSearchData}
                   setSavedArticles={setSavedArticles}
                   savedArticles={savedArticles}
+                  isLoggedIn={isLoggedIn}
+                  location={location}
                 />
               );
             })}

@@ -11,6 +11,8 @@ function Main({
   newsSearchData,
   setSavedArticles,
   savedArticles,
+  isLoggedIn,
+  location,
 }) {
   return (
     <main className="main">
@@ -25,6 +27,8 @@ function Main({
             newsSearchData={newsSearchData}
             setSavedArticles={setSavedArticles}
             savedArticles={savedArticles}
+            isLoggedIn={isLoggedIn}
+            location={location}
           />
         )
       ) : null}

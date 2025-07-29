@@ -1,7 +1,12 @@
 import NewsCard from "../NewsCard/NewsCard";
 import "../Profile/Profile.css";
 
-function Profile({ savedArticles, newsSearchData, setSavedArticles }) {
+function Profile({
+  savedArticles,
+  newsSearchData,
+  setSavedArticles,
+  location,
+}) {
   return (
     <section className="saved-articles">
       <ul className="saved-articles__list">
@@ -13,6 +18,7 @@ function Profile({ savedArticles, newsSearchData, setSavedArticles }) {
               savedArticles={savedArticles}
               newsSearchData={newsSearchData}
               setSavedArticles={setSavedArticles}
+              location={location}
             />
           );
         })}
