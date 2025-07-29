@@ -2,8 +2,27 @@ import { Link } from "react-router-dom";
 //import { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useState } from "react";
 
-function LoginModal({ isOpen, onClose, registerClick, formRef }) {
+function LoginModal({
+  isOpen,
+  onClose,
+  registerClick,
+  formRef,
+  data,
+  handleChange,
+}) {
+  // const [data, setData] = useState({
+  //   email: "",
+  //   password: "",
+  // });
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  // };
   return (
     <ModalWithForm
       title="Sign in"
@@ -22,6 +41,8 @@ function LoginModal({ isOpen, onClose, registerClick, formRef }) {
           id="login-email-input"
           placeholder="Enter email"
           name="email"
+          value={data.email}
+          onChange={handleChange}
         />
         <span className="modal__error" id="login-email-input-error"></span>
       </label>
@@ -33,6 +54,8 @@ function LoginModal({ isOpen, onClose, registerClick, formRef }) {
           id="login-password-input"
           placeholder="Enter password"
           name="password"
+          value={data.password}
+          onChange={handleChange}
         />
         <span className="modal__error" id="login-password-input-error"></span>
       </label>

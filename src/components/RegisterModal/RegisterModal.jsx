@@ -1,9 +1,27 @@
-import { Link } from "react-router-dom";
-//import { useState } from "react";
+import { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function RegisterModal({ isOpen, onClose, loginClick, formRef }) {
+function RegisterModal({
+  isOpen,
+  onClose,
+  loginClick,
+  formRef,
+  data,
+  handleChange,
+}) {
+  // const [data, setData] = useState({
+  //   email: "",
+  //   password: "",
+  //   username: "",
+  // });
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  // };
   return (
     <ModalWithForm
       title="Sign up"
@@ -22,6 +40,8 @@ function RegisterModal({ isOpen, onClose, loginClick, formRef }) {
           id="register-email-input"
           placeholder="Enter email"
           name="email"
+          value={data.email}
+          onChange={handleChange}
         />
         <span className="modal__error" id="register-email-input-error"></span>
       </label>
@@ -33,6 +53,8 @@ function RegisterModal({ isOpen, onClose, loginClick, formRef }) {
           id="register-password-input"
           placeholder="Enter password"
           name="password"
+          value={data.password}
+          onChange={handleChange}
         />
         <span
           className="modal__error"
@@ -47,6 +69,8 @@ function RegisterModal({ isOpen, onClose, loginClick, formRef }) {
           id="register-username-input"
           placeholder="Enter your username"
           name="username"
+          value={data.username}
+          onChange={handleChange}
         />
         <span
           className="modal__error"

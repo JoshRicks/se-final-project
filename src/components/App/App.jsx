@@ -30,6 +30,12 @@ function App() {
   const [searchApiError, setSearchApiError] = useState(false);
   const [savedArticles, setSavedArticles] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const [registerData, setRegisterData] = useState({
+    email: "",
+    password: "",
+    username: "",
+  });
 
   useEffect(() => {
     if (newsSearchData.q === "") {
@@ -96,6 +102,7 @@ function App() {
     if (formRef.current) {
       formRef.current.reset();
     }
+    setLoginData({ email: "", password: "" });
     validation.resetValidation(validation.config);
   };
 
@@ -105,6 +112,7 @@ function App() {
     if (formRef.current) {
       formRef.current.reset();
     }
+    setRegisterData({ email: "", password: "", username: "" });
     validation.resetValidation(validation.config);
   };
 
@@ -113,7 +121,25 @@ function App() {
     if (formRef.current) {
       formRef.current.reset();
     }
+    setLoginData({ email: "", password: "" });
+    setRegisterData({ email: "", password: "", username: "" });
     validation.resetValidation(validation.config);
+  };
+
+  const handleLoginChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleRegisterChange = (e) => {
+    const { name, value } = e.target;
+    setRegisterData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   return (
@@ -123,12 +149,16 @@ function App() {
         onClose={closeActiveModal}
         loginClick={handleLogInClick}
         formRef={formRef}
+        data={registerData}
+        handleChange={handleRegisterChange}
       />
       <LoginModal
         isOpen={activeModal === "login-modal"}
         onClose={closeActiveModal}
         registerClick={handleRegisterClick}
         formRef={formRef}
+        data={loginData}
+        handleChange={handleLoginChange}
       />
       <div className="page__content">
         <Header
