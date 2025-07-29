@@ -12,6 +12,7 @@ function Cards({
   savedArticles,
   isLoggedIn,
   location,
+  handleLoginClick,
 }) {
   const [cardTotal, setCardTotal] = useState(3);
   const [visibleCards, setVisibleCards] = useState([]);
@@ -54,6 +55,7 @@ function Cards({
                   savedArticles={savedArticles}
                   isLoggedIn={isLoggedIn}
                   location={location}
+                  handleLoginClick={handleLoginClick}
                 />
               );
             })}

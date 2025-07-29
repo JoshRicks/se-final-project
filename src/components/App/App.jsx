@@ -184,6 +184,7 @@ function App() {
                   savedArticles={savedArticles}
                   isLoggedIn={isLoggedIn}
                   location={location}
+                  handleLoginClick={handleLogInClick}
                 />
                 <About />
               </>

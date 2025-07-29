@@ -9,6 +9,7 @@ function NewsCard({
   savedArticles,
   isLoggedIn,
   location,
+  handleLoginClick,
 }) {
   const handleSaveClick = () => {
     const newSavedArticle = {
@@ -60,7 +61,7 @@ function NewsCard({
         ) : (
           <>
             <p className="news-card__text">Sign in to save articles</p>
-            <button className="news-card__save-btn" onClick={handleSaveClick}>
+            <button className="news-card__save-btn" onClick={handleLoginClick}>
               <img
                 src={saveImage}
                 alt="save"

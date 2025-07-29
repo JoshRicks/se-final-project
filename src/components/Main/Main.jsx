@@ -13,6 +13,7 @@ function Main({
   savedArticles,
   isLoggedIn,
   location,
+  handleLoginClick,
 }) {
   return (
     <main className="main">
@@ -29,6 +30,7 @@ function Main({
             savedArticles={savedArticles}
             isLoggedIn={isLoggedIn}
             location={location}
+            handleLoginClick={handleLoginClick}
           />
         )
       ) : null}
