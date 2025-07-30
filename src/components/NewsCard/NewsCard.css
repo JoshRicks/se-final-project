@@ -121,9 +121,17 @@
   border-radius: 10px;
   border: none;
 }
+.news-card__save-btn:hover .news-card__trash-icon {
+  opacity: 100%;
+}
 .news-card__save-icon {
   width: 24px;
   height: 24px;
+}
+.news-card__trash-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 40%;
 }
 .news-card__keyword {
   display: flex;

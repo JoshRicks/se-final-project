@@ -17,6 +17,8 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import Profile from "../Profile/Profile";
 import validation from "../../utils/validation";
+import auth from "../../utils/auth";
+import user from "../../utils/constants";
 
 function App() {
   const [newsSearchData, setNewsSearchData] = useState({
@@ -36,6 +38,7 @@ function App() {
     password: "",
     username: "",
   });
+  const [registerError, setRegisterError] = useState(false);
 
   useEffect(() => {
     if (newsSearchData.q === "") {
@@ -86,6 +89,7 @@ function App() {
   }, []);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const formRef = useRef(null);
 
   const handleSearchSubmit = (e, data) => {
@@ -136,10 +140,40 @@ function App() {
 
   const handleRegisterChange = (e) => {
     const { name, value } = e.target;
+    setRegisterError(false);
     setRegisterData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const handleRegisterError = (e) => {
+    const { value } = e.target;
+    if (value === user.email) {
+      setRegisterError(true);
+    }
+  };
+
+  const handleLogIn = ({ email, password }) => {
+    if (!email || !password) {
+      return;
+    }
+    auth
+      .authorize(email, password)
+      .then((data) => {
+        if (data.token) {
+          setIsLoggedIn(true);
+          const redirectPath = location.state?.from?.pathname || "/profile";
+          navigate(redirectPath);
+        }
+      })
+      .then(closeActiveModal())
+      .catch(console.error);
+  };
+
+  const handleLogOut = () => {
+    setIsLoggedIn(false);
+    navigate("/");
   };
 
   return (
@@ -151,6 +185,8 @@ function App() {
         formRef={formRef}
         data={registerData}
         handleChange={handleRegisterChange}
+        handleRegisterError={handleRegisterError}
+        registerError={registerError}
       />
       <LoginModal
         isOpen={activeModal === "login-modal"}
@@ -159,6 +195,7 @@ function App() {
         formRef={formRef}
         data={loginData}
         handleChange={handleLoginChange}
+        handleLogIn={handleLogIn}
       />
       <div className="page__content">
         <Header
@@ -167,6 +204,7 @@ function App() {
           location={location}
           savedArticles={savedArticles}
           isLoggedIn={isLoggedIn}
+          logoutClick={handleLogOut}
         />
         <Routes>
           <Route
@@ -191,7 +229,7 @@ function App() {
             }
           />
           <Route
-            path="/saved-articles"
+            path="/saved-news"
             element={
               <Profile
                 savedArticles={savedArticles}
@@ -199,6 +237,16 @@ function App() {
                 setSavedArticles={setSavedArticles}
                 location={location}
               />
+            }
+          />
+          <Route
+            path="*"
+            element={
+              isLoggedIn ? (
+                <Navigate to="/saved-news" replace />
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
         </Routes>

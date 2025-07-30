@@ -4,31 +4,31 @@ import "../Navigation/Navigation.css";
 import logoutDark from "../../assets/logout-dark.png";
 import logoutLight from "../../assets/logout-light.png";
 
-function Navigation({ loginClick, location, isLoggedIn }) {
+function Navigation({ loginClick, location, isLoggedIn, logoutClick }) {
   const titleClassName =
-    location.pathname === "/saved-articles"
+    location.pathname === "/saved-news"
       ? "navigation__title navigation__title-v2"
       : "navigation__title";
   const homeClassName =
-    location.pathname === "/saved-articles"
+    location.pathname === "/saved-news"
       ? "navigation__home navigation__home-v2"
       : "navigation__home";
   const btnClassName =
-    location.pathname === "/saved-articles"
+    location.pathname === "/saved-news"
       ? "navigation__button navigation__button-v2"
       : "navigation__button";
   const contentClassName =
-    location.pathname === "/saved-articles"
+    location.pathname === "/saved-news"
       ? "navigation__content navigation__content-v2"
       : "navigation__content";
   const articleClassName =
-    location.pathname === "/saved-articles"
+    location.pathname === "/saved-news"
       ? "navigation__articles navigation__articles-v2"
       : "navigation__articles";
   const logoutImg =
-    location.pathname === "/saved-articles" ? logoutDark : logoutLight;
+    location.pathname === "/saved-news" ? logoutDark : logoutLight;
   const logoutBtnClassName =
-    location.pathname === "/saved-articles"
+    location.pathname === "/saved-news"
       ? "navigation__logout-btn navigation__logout-btn-v2"
       : "navigation__logout-btn";
 
@@ -42,11 +42,11 @@ function Navigation({ loginClick, location, isLoggedIn }) {
       </Link>
       {isLoggedIn ? (
         <>
-          <Link to="/saved-articles" className="navigation__articles-link">
+          <Link to="/saved-news" className="navigation__articles-link">
             <p className={articleClassName}>Saved articles</p>
           </Link>
-          <button className={logoutBtnClassName}>
-            Elise{" "}
+          <button className={logoutBtnClassName} onClick={logoutClick}>
+            Elise
             <img
               src={logoutImg}
               alt="Logout"

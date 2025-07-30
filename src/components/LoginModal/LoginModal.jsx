@@ -11,18 +11,13 @@ function LoginModal({
   formRef,
   data,
   handleChange,
+  handleLogIn,
 }) {
-  // const [data, setData] = useState({
-  //   email: "",
-  //   password: "",
-  // });
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
+  const handleLoginclick = (e) => {
+    console.log("submitted");
+    e.preventDefault();
+    handleLogIn(data);
+  };
   return (
     <ModalWithForm
       title="Sign in"
@@ -32,10 +27,12 @@ function LoginModal({
       isOpen={isOpen}
       onClose={onClose}
       formRef={formRef}
+      onSubmit={handleLoginclick}
     >
       <label htmlFor="login-email-input" className="modal__label">
         Email
         <input
+          required
           type="email"
           className="modal__input"
           id="login-email-input"
@@ -49,6 +46,7 @@ function LoginModal({
       <label htmlFor="login-password-input" className="modal__label">
         Password
         <input
+          required
           type="password"
           className="modal__input"
           id="login-password-input"

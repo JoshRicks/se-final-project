@@ -9,19 +9,12 @@ function RegisterModal({
   formRef,
   data,
   handleChange,
+  handleRegisterError,
+  registerError,
 }) {
-  // const [data, setData] = useState({
-  //   email: "",
-  //   password: "",
-  //   username: "",
-  // });
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
+  const labelClassName = registerError
+    ? "modal__label modal__label_type_error"
+    : "modal__label";
   return (
     <ModalWithForm
       title="Sign up"
@@ -35,6 +28,7 @@ function RegisterModal({
       <label htmlFor="register-email-input" className="modal__label">
         Email
         <input
+          required
           type="email"
           className="modal__input"
           id="register-email-input"
@@ -42,12 +36,14 @@ function RegisterModal({
           name="email"
           value={data.email}
           onChange={handleChange}
+          onBlur={handleRegisterError}
         />
         <span className="modal__error" id="register-email-input-error"></span>
       </label>
       <label htmlFor="register-password-input" className="modal__label">
         Password
         <input
+          required
           type="password"
           className="modal__input"
           id="register-password-input"
@@ -61,9 +57,10 @@ function RegisterModal({
           id="register-password-input-error"
         ></span>
       </label>
-      <label htmlFor="register-username-input" className="modal__label">
+      <label htmlFor="register-username-input" className={labelClassName}>
         Username
         <input
+          required
           type="text"
           className="modal__input"
           id="register-username-input"
@@ -76,8 +73,13 @@ function RegisterModal({
           className="modal__error"
           id="register-username-input-error"
         ></span>
+        {registerError ? (
+          <span htmlFor="register-error" className="modal__register-error">
+            This email is not available
+          </span>
+        ) : null}
       </label>
-      <span htmlFor="register-error" className="modal__register-error"></span>
+
       <p className="login__btn">
         or
         <button className="login__link" onClick={loginClick}>

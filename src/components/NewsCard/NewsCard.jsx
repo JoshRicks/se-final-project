@@ -1,6 +1,7 @@
 import "../NewsCard/NewsCard.css";
 import bookmark from "../../assets/bookmark.svg";
 import savedBookmark from "../../assets/saved-bookmark.svg";
+import trash from "../../assets/trash.svg";
 
 function NewsCard({
   article,
@@ -40,15 +41,12 @@ function NewsCard({
   return (
     <div className="news-card">
       <div className="news-card__save-container">
-        {location.pathname === "/saved-articles" ? (
+        {location.pathname === "/saved-news" ? (
           <>
             <p className="news-card__keyword">{article.keyword}</p>
+            <p className="news-card__text">Remove from saved</p>
             <button className="news-card__save-btn" onClick={handleSaveClick}>
-              <img
-                src={saveImage}
-                alt="save"
-                className="news-card__save-icon"
-              />
+              <img src={trash} alt="save" className="news-card__trash-icon" />
             </button>
           </>
         ) : isLoggedIn ? (

@@ -1,6 +1,9 @@
 export const APIkey = "09d3ce03d90444e9b0d7def99cfdbd63";
 
-export const baseUrl = "https://newsapi.org/v2/everything?";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://nomoreparties.co/news/v2/everything?"
+    : "https://newsapi.org/v2/everything?";
 
 export const from = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
   .toISOString()
@@ -13,3 +16,11 @@ export function checkResponse(res) {
   }
   return Promise.reject(`Error: ${res.status}`);
 }
+
+const user = {
+  email: "fake@example.com",
+  password: "password",
+  username: "fake user",
+};
+
+export default user;
