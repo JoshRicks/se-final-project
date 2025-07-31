@@ -14,8 +14,8 @@
 .cards__title {
   font-family: "Roboto Slab";
   font-weight: 400;
-  font-size: 30px;
-  line-height: 34px;
+  font-size: 40px;
+  line-height: 1.15;
   letter-spacing: 0px;
   color: #1a1b22;
   margin: 0 0 64px;
@@ -41,4 +41,43 @@
   text-align: center;
   vertical-align: middle;
   color: #1a1b22;
+}
+@media screen and (max-width: 1050px) {
+  .cards {
+    padding: 40px;
+  }
+  .cards__list {
+    grid-template-columns: repeat(auto-fit, 224px);
+    gap: 8px;
+  }
+  .cards__title {
+    margin: 0 0 32px;
+    font-size: 30px;
+  }
+  .cards__button {
+    margin: 32px auto 0;
+    width: 240px;
+    height: 56px;
+    background-color: #fff;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .cards {
+    padding: 32px 16px 24px;
+  }
+  .cards__list {
+    grid-template-columns: repeat(auto-fit, 288px);
+    gap: 10px;
+  }
+  .cards__title {
+    margin: 0 0 58px;
+    font-size: 30px;
+  }
+  .cards__button {
+    margin: 6px auto 0;
+    width: 288px;
+    height: 56px;
+    background-color: #fff;
+  }
 }

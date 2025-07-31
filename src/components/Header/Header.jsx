@@ -12,6 +12,7 @@ function Header({
   savedArticles,
   isLoggedIn,
   logoutClick,
+  handleMobileMenuClick,
 }) {
   const headerClassName =
     location.pathname === "/saved-news" ? "header articles-header" : "header";
@@ -22,6 +23,7 @@ function Header({
         location={location}
         isLoggedIn={isLoggedIn}
         logoutClick={logoutClick}
+        handleMobileMenuClick={handleMobileMenuClick}
       />
       {location.pathname === "/saved-news" ? (
         <SavedDetails savedArticles={savedArticles} />

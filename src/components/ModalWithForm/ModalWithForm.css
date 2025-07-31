@@ -177,3 +177,38 @@
   line-height: 1;
   letter-spacing: 0%;
 }
+
+@media screen and (max-width: 550px) {
+  .modal__container {
+    height: 528px;
+    width: 288px;
+    padding: 16px;
+    top: 56px;
+  }
+  .modal__title {
+    margin-bottom: 18px;
+  }
+  .modal__close-btn {
+    top: -40px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+  }
+  .modal__close-img {
+    width: 24px;
+    height: 24px;
+  }
+  .modal__submit-btn {
+    width: 288px;
+    height: 64px;
+    margin: 0 auto 16px;
+  }
+  .register__btn {
+    bottom: 227px;
+    left: 49px;
+  }
+  .login__btn {
+    bottom: 143px;
+    left: 49px;
+  }
+}

@@ -21,3 +21,14 @@
 .articles-header {
   background: #fff;
 }
+@media screen and (max-width: 1050px) {
+  .header {
+    max-width: 768px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .header {
+    max-width: 320px;
+  }
+}

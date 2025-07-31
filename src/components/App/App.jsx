@@ -19,6 +19,7 @@ import Profile from "../Profile/Profile";
 import validation from "../../utils/validation";
 import auth from "../../utils/auth";
 import user from "../../utils/constants";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 function App() {
   const [newsSearchData, setNewsSearchData] = useState({
@@ -120,6 +121,10 @@ function App() {
     validation.resetValidation(validation.config);
   };
 
+  const handleMobileMenuClick = () => {
+    setActiveModal("mobile-menu");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
     if (formRef.current) {
@@ -174,10 +179,18 @@ function App() {
   const handleLogOut = () => {
     setIsLoggedIn(false);
     navigate("/");
+    closeActiveModal();
   };
 
   return (
     <div className="page">
+      <MobileMenu
+        isOpen={activeModal === "mobile-menu"}
+        isLoggedIn={isLoggedIn}
+        onClose={closeActiveModal}
+        loginClick={handleLogInClick}
+        logoutClick={handleLogOut}
+      />
       <RegisterModal
         isOpen={activeModal === "register-modal"}
         onClose={closeActiveModal}
@@ -205,6 +218,7 @@ function App() {
           savedArticles={savedArticles}
           isLoggedIn={isLoggedIn}
           logoutClick={handleLogOut}
+          handleMobileMenuClick={handleMobileMenuClick}
         />
         <Routes>
           <Route

@@ -3,8 +3,16 @@ import { Link } from "react-router-dom";
 import "../Navigation/Navigation.css";
 import logoutDark from "../../assets/logout-dark.png";
 import logoutLight from "../../assets/logout-light.png";
+import menuLight from "../../assets/menu-light.svg";
+import menuDark from "../../assets/menu-dark.svg";
 
-function Navigation({ loginClick, location, isLoggedIn, logoutClick }) {
+function Navigation({
+  loginClick,
+  location,
+  isLoggedIn,
+  logoutClick,
+  handleMobileMenuClick,
+}) {
   const titleClassName =
     location.pathname === "/saved-news"
       ? "navigation__title navigation__title-v2"
@@ -31,12 +39,16 @@ function Navigation({ loginClick, location, isLoggedIn, logoutClick }) {
     location.pathname === "/saved-news"
       ? "navigation__logout-btn navigation__logout-btn-v2"
       : "navigation__logout-btn";
+  const menuImg = location.pathname === "/saved-news" ? menuDark : menuLight;
 
   return (
     <div className={contentClassName}>
       <Link to="/" className="navigation__logo-link">
         <h1 className={titleClassName}>NewsExplorer</h1>
       </Link>
+      <button className="navigation__menu-btn" onClick={handleMobileMenuClick}>
+        <img src={menuImg} alt="menu" className="navigation__menu-icon" />
+      </button>
       <Link to="/" className="navigation__home-link">
         <p className={homeClassName}>Home</p>
       </Link>
