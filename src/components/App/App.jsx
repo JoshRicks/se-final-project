@@ -20,6 +20,7 @@ import validation from "../../utils/validation";
 import auth from "../../utils/auth";
 import user from "../../utils/constants";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import RegistrationSuccess from "../RegistrationSuccess/RegistrationSuccess";
 
 function App() {
   const [newsSearchData, setNewsSearchData] = useState({
@@ -175,6 +176,10 @@ function App() {
       .then(closeActiveModal())
       .catch(console.error);
   };
+  const handleRegistration = (e) => {
+    e.preventDefault();
+    setActiveModal("success-modal");
+  };
 
   const handleLogOut = () => {
     setIsLoggedIn(false);
@@ -184,6 +189,11 @@ function App() {
 
   return (
     <div className="page">
+      <RegistrationSuccess
+        isOpen={activeModal === "success-modal"}
+        loginClick={handleLogInClick}
+        onClose={closeActiveModal}
+      />
       <MobileMenu
         isOpen={activeModal === "mobile-menu"}
         isLoggedIn={isLoggedIn}
@@ -200,6 +210,7 @@ function App() {
         handleChange={handleRegisterChange}
         handleRegisterError={handleRegisterError}
         registerError={registerError}
+        signUpClick={handleRegistration}
       />
       <LoginModal
         isOpen={activeModal === "login-modal"}

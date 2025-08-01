@@ -1,7 +1,3 @@
-@font-face {
-  font-family: "Roboto";
-  src: url("../../vendor/fonts/roboto-400-regular.woff") format("woff");
-}
 .preloader {
   border: 1px solid;
 
@@ -42,7 +38,7 @@
 
 .circle-preloader__text {
   margin: 178px auto 80px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.33;

@@ -10,7 +10,7 @@
   padding: 40px 0 56px 104px;
 }
 .saved-details__text {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.33px;
@@ -19,7 +19,7 @@
   margin: 0 0 28px;
 }
 .saved-details__title {
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", sans-serif;
   font-weight: 400;
   font-size: 40px;
   line-height: 1.15;
@@ -32,7 +32,7 @@
   gap: 3px;
 }
 .saved-details__description-title {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.33;
@@ -40,7 +40,7 @@
   margin: 0;
 }
 .saved-details-description-keywords {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 1.33;

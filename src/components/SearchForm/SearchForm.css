@@ -1,12 +1,3 @@
-@font-face {
-  font-family: "Roboto";
-  src: url("../../vendor/fonts/roboto-400-regular.woff")
-    url("../../vendor/fonts/roboto-500.woff") format("woff");
-}
-@font-face {
-  font-family: "Roboto Slab";
-  src: url("../../vendor/fonts/roboto-slab-400-regular.woff") format("woff");
-}
 .search-form {
   display: flex;
   max-width: 1440px;
@@ -17,7 +8,7 @@
 }
 .search-form__title {
   width: 608px;
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", sans-serif;
   font-weight: 400;
   font-size: 60px;
   line-height: 1.06;
@@ -27,7 +18,7 @@
 }
 .search-form__text {
   width: 608px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.25;
@@ -45,7 +36,7 @@
   width: 608px;
   border-radius: 100px;
   padding: 0 0 0 24px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.2;
@@ -60,7 +51,7 @@
   box-shadow: 0px 5px 15px 0px #0e1a3933;
   background-color: #2f71e5;
   color: #fff;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.33;
@@ -71,12 +62,20 @@
   border-radius: 100px;
   margin-left: -168px;
   z-index: 2;
+  transition: 0.5s ease-in;
+}
+.search-form__button:hover {
+  background-color: #347eff;
+  cursor: pointer;
+}
+.search-form__button:active {
+  background-color: #2a65cc;
 }
 
 @media screen and (max-width: 1050px) {
   .search-form {
     max-width: 768px;
-    margin: 38px 0 48px;
+    margin: 38px auto 48px;
   }
   .search-form__title {
     width: 385px;
@@ -106,7 +105,7 @@
     max-width: 288px;
     width: 288px;
     padding: 30px 16px 0 16px;
-    margin: 0;
+    margin: 0 auto;
   }
   .search-form__title {
     width: 285px;

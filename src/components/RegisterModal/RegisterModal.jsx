@@ -11,6 +11,7 @@ function RegisterModal({
   handleChange,
   handleRegisterError,
   registerError,
+  signUpClick,
 }) {
   const labelClassName = registerError
     ? "modal__label modal__label_type_error"
@@ -24,6 +25,7 @@ function RegisterModal({
       isOpen={isOpen}
       onClose={onClose}
       formRef={formRef}
+      onSubmit={signUpClick}
     >
       <label htmlFor="register-email-input" className="modal__label">
         Email
@@ -79,13 +81,10 @@ function RegisterModal({
           </span>
         ) : null}
       </label>
-
-      <p className="login__btn">
-        or
-        <button className="login__link" onClick={loginClick}>
-          Sign in
-        </button>
-      </p>
+      <button className="login__btn" onClick={loginClick}>
+        <p className="login__btn-text">or</p>
+        Sign in
+      </button>
     </ModalWithForm>
   );
 }

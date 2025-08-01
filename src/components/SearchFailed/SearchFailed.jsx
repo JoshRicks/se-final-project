@@ -1,5 +1,5 @@
 import "../SearchFailed/SearchFailed.css";
-import notFoundImg from "../../assets/not-found.png";
+import notFoundImg from "../../assets/not-found.svg";
 
 function SearchFailed({ searchApiError }) {
   return (

@@ -1,21 +1,11 @@
-@font-face {
-  src: url("../../vendor/fonts/roboto-slab-700.woff") format("woff");
-  font-family: "Roboto Slab";
-}
-@font-face {
-  font-family: "Roboto";
-  src: url("../../vendor/fonts/roboto-500.woff") format("woff");
-}
-
 .header {
   display: flex;
   flex-direction: column;
   max-width: 1440px;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../../assets/background-image.jpg");
+    url("../../assets/background-img.svg");
   background-size: cover;
   background-position: center;
-  border: 1px solid #d1d2d6;
 }
 
 .articles-header {
@@ -23,12 +13,12 @@
 }
 @media screen and (max-width: 1050px) {
   .header {
-    max-width: 768px;
+    max-width: 1050px;
   }
 }
 
 @media screen and (max-width: 550px) {
   .header {
-    max-width: 320px;
+    max-width: 550px;
   }
 }

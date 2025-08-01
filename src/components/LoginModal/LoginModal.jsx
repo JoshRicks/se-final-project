@@ -57,12 +57,10 @@ function LoginModal({
         />
         <span className="modal__error" id="login-password-input-error"></span>
       </label>
-      <p className="register__btn">
-        or
-        <button className="register__link" onClick={registerClick}>
-          Sign up
-        </button>
-      </p>
+      <button className="register__btn" onClick={registerClick}>
+        <p className="register__btn-text">or</p>
+        Sign up
+      </button>
     </ModalWithForm>
   );
 }

@@ -39,7 +39,7 @@ function NewsCard({
   });
 
   return (
-    <div className="news-card">
+    <li className="news-card">
       <div className="news-card__save-container">
         {location.pathname === "/saved-news" ? (
           <>
@@ -78,7 +78,7 @@ function NewsCard({
       <h4 className="news-card__title">{article.title}</h4>
       <p className="news-card__description">{article.description}</p>
       <p className="news-card__source">{article.source.name}</p>
-    </div>
+    </li>
   );
 }
 

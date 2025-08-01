@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 import "./MobileMenu.css";
-import logoutLight from "../../assets/logout-light.png";
-import closeBtn from "../../assets/close.png";
+import logoutLight from "../../assets/logout-light.svg";
+import closeBtn from "../../assets/close.svg";
 
 function MobileMenu({ isOpen, isLoggedIn, onClose, loginClick, logoutClick }) {
   const containerClassName = isLoggedIn
