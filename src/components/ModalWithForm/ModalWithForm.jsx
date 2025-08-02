@@ -11,6 +11,7 @@ function ModalWithForm({
   isOpen,
   formRef,
   onSubmit,
+  belowSubmit,
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`} id={id}>
@@ -27,6 +28,7 @@ function ModalWithForm({
         >
           {children}
           <button className="modal__submit-btn">{buttonText}</button>
+          {belowSubmit}
         </form>
       </div>
     </div>

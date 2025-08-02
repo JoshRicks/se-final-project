@@ -18,6 +18,12 @@ function LoginModal({
     e.preventDefault();
     handleLogIn(data);
   };
+  const belowSubmit = (
+    <button className="register__btn" onClick={registerClick}>
+      <p className="register__btn-text">or</p>
+      Sign up
+    </button>
+  );
   return (
     <ModalWithForm
       title="Sign in"
@@ -28,6 +34,7 @@ function LoginModal({
       onClose={onClose}
       formRef={formRef}
       onSubmit={handleLoginclick}
+      belowSubmit={belowSubmit}
     >
       <label htmlFor="login-email-input" className="modal__label">
         Email
@@ -57,10 +64,6 @@ function LoginModal({
         />
         <span className="modal__error" id="login-password-input-error"></span>
       </label>
-      <button className="register__btn" onClick={registerClick}>
-        <p className="register__btn-text">or</p>
-        Sign up
-      </button>
     </ModalWithForm>
   );
 }

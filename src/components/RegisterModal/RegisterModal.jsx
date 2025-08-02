@@ -16,6 +16,12 @@ function RegisterModal({
   const labelClassName = registerError
     ? "modal__label modal__label_type_error"
     : "modal__label";
+  const belowSubmit = (
+    <button className="login__btn" onClick={loginClick}>
+      <p className="login__btn-text">or</p>
+      Sign in
+    </button>
+  );
   return (
     <ModalWithForm
       title="Sign up"
@@ -26,6 +32,7 @@ function RegisterModal({
       onClose={onClose}
       formRef={formRef}
       onSubmit={signUpClick}
+      belowSubmit={belowSubmit}
     >
       <label htmlFor="register-email-input" className="modal__label">
         Email
@@ -81,10 +88,6 @@ function RegisterModal({
           </span>
         ) : null}
       </label>
-      <button className="login__btn" onClick={loginClick}>
-        <p className="login__btn-text">or</p>
-        Sign in
-      </button>
     </ModalWithForm>
   );
 }
