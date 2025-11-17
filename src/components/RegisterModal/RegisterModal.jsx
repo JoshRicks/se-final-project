@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function RegisterModal({
