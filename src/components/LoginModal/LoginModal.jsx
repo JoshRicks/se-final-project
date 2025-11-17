@@ -1,8 +1,4 @@
-import { Link } from "react-router-dom";
-//import { useState } from "react";
-
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
 
 function LoginModal({
   isOpen,
